@@ -5,5 +5,6 @@ package vending.product;
         public String description() {
             return "This is a product";
         }
+
     }
 
