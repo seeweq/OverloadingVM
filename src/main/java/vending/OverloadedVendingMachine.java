@@ -52,6 +52,7 @@ public class OverloadedVendingMachine {
     }
     int getStock(){
         int totalStock = softDrinkQty + saltySnacksQty + chocolatesQty;
+        System.out.println(totalStock);
         return totalStock;
     }
 
@@ -59,11 +60,21 @@ public class OverloadedVendingMachine {
 
     public static void main(String[] args) {
         OverloadedVendingMachine ovm = new OverloadedVendingMachine(1, 1, 1);
-        Product products = new Product();
-        ovm.buy(products);
-        ovm.addStock(products);
-//        ovm.getStock();
 
+        ovm.buy(1,1,1);
+        ovm.addStock(2,10,15);
+
+
+    }
+    public void buy(int softDrink,int saltySnack,int chocolate){
+        System.out.println("You bought " + softDrink + " softDrink(s)");
+        System.out.println( "You bought "  + saltySnack +" saltySnack(s)");
+        System.out.println("You bought "  +chocolate + " chocolate(s)");
+    }
+    public void addStock(int softDrink,int saltySnack,int chocolate){
+        System.out.println(softDrink + " softDrink(s) is in stock");
+        System.out.println(saltySnack +" saltySnack(s) is in stock");
+        System.out.println(chocolate + " chocolate(s) is in stock");
     }
 }
 
