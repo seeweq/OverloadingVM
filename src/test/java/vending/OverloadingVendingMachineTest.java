@@ -2,10 +2,7 @@ package vending;
 
 import org.junit.jupiter.api.Test;
 import vending.OverloadedVendingMachine;
-import vending.product.Chocolate;
-import vending.product.Product;
-import vending.product.SaltySnack;
-import vending.product.SoftDrink;
+import vending.product.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,52 +11,73 @@ public class OverloadingVendingMachineTest {
     @Test
     public void shouldBeAbleToBuyOfEachProductAndCheckProductsInStock() {
 
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(3,1,1,1);
         Product product = new Product();
-        mv.buy(product);
-        assertEquals(3, mv.getStock());
+        vm.buy(product);
+        assertEquals(2, vm.getStock());
     }
     @Test
     public void ShouldBeAbleToBuyACheckStockForSoftDrink(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(2,1,1,1);
         SoftDrink softDrink = new SoftDrink();
-        mv.buy(softDrink);
-        assertEquals(1, mv.getStock(softDrink));
+        vm.buy(softDrink);
+        assertEquals(1, vm.getStock(softDrink));
     }
     @Test
     public void ShouldBeAbleToBuyAndCheckStockForSaltySnack(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,3,1,1);
         SaltySnack saltySnack = new SaltySnack();
-        mv.buy(saltySnack);
-        assertEquals(1, mv.getStock(saltySnack));
+        vm.buy(saltySnack);
+        assertEquals(2, vm.getStock(saltySnack));
     }
     @Test
     public void ShouldBeAbleToBuyAndCheckStockForChocolate(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,1,1,1);
         Chocolate chocolate = new Chocolate();
-        mv.buy(chocolate);
-        assertEquals(1, mv.getStock(chocolate));
+        vm.buy(chocolate);
+        assertEquals(0, vm.getStock(chocolate));
     }
     @Test
     public void ShouldBeAbleToAddStockAndCheckWholeStockForChocolate(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,1,10,1);
         Chocolate chocolate = new Chocolate();
-        mv.addStock(chocolate);
-        assertEquals(1, mv.getStock(chocolate));
+        vm.addStock(chocolate);
+        assertEquals(11, vm.getStock(chocolate));
     }
     @Test
     public void ShouldBeAbleToAddStockAndCheckWholeStockForSoftDrink(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(12,1,1,1);
         SoftDrink softDrink = new SoftDrink();
-        mv.addStock(softDrink );
-        assertEquals(1, mv.getStock(softDrink ));
+        vm.addStock(softDrink );
+        assertEquals(13, vm.getStock(softDrink ));
     }
     @Test
     public void ShouldBeAbleToAddStockAndCheckWholeStockForSaltySnack(){
-        OverloadedVendingMachine mv = new OverloadedVendingMachine(1,1,1);
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,14,1,1);
         SaltySnack saltySnack = new SaltySnack();
-        mv.addStock(saltySnack);
-        assertEquals(1, mv.getStock(saltySnack));
+        vm.addStock(saltySnack);
+        assertEquals(15, vm.getStock(saltySnack));
+    }
+    @Test
+    public void ShouldBeAbleToSpecifyAProductQtyToAddStock(){
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,14,1,1);
+        SaltySnack saltySnack = new SaltySnack();
+        vm.addStock(saltySnack,12);
+        assertEquals(26, vm.getStock(saltySnack));
+    }
+    @Test
+    public void ShouldBeAbleToSpecifyAProductQtyToBuyProduct(){
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(12,14,1,1);
+        SoftDrink softDrink = new SoftDrink();
+        vm.buy(softDrink,6);
+        assertEquals(6, vm.getStock(softDrink));
+    }
+    @Test
+    public void ShouldBeAbleToBuyAndCheckStockForBiltong(){
+        OverloadedVendingMachine vm = new OverloadedVendingMachine(1,3,1,2);
+        Biltong biltong = new Biltong();
+        vm.buy(biltong);
+        assertEquals(1, vm.getStock(biltong));
     }
 
 }

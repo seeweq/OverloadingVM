@@ -7,40 +7,51 @@ import vending.product.SaltySnack;
 import vending.product.SoftDrink;
 
 public class OverloadedVendingMachine {
-    private  int chocolatesQty;
-    private int softDrinkQty;
-    private int saltySnacksQty;
+    public int chocolatesQty;
+    public int softDrinkQty;
+    public int saltySnacksQty;
+    public int biltongQty;
 
-    OverloadedVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty){
+    OverloadedVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty,int biltongQty){
         // set the stockLevel instance variables for each product in the constructor
         this.softDrinkQty = softDrinkQty;
         this.saltySnacksQty = saltySnacksQty;
         this.chocolatesQty = chocolatesQty;
+        this.biltongQty = biltongQty;
     }
-    void buy(SoftDrink softDrink){
-        System.out.println("buy 1 SoftDrink");
-    }
+    void buy(SoftDrink softDrink){ softDrinkQty -=1;}
     void buy(SaltySnack saltySnack){
-        System.out.println("buy 1 SaltySnack");
+        saltySnacksQty-=1;
     }
     void buy(Chocolate chocolate){
-        System.out.println("buy 1 Chocolate");
+       chocolatesQty-=1;
     }
+    void buy(Biltong biltong){ biltongQty-=1;}
+
     void buy(Product product){
-        System.out.println("buy 1 of each product");
+        softDrinkQty -=1;
+        saltySnacksQty-=1;
+        chocolatesQty-=1;
     }
     void addStock(Product product){
-        System.out.println("add 1 stock item for each Product type");
+        softDrinkQty ++;
+        saltySnacksQty++;
+        chocolatesQty++;
+
     }
     void addStock(SoftDrink softDrink){
-        System.out.println("add 1 SoftDrink to stock");
+        softDrinkQty ++;
     }
     void addStock(SaltySnack saltySnack){
-        System.out.println("add 1 SaltySnack to stock");
+        saltySnacksQty++;
     }
     void addStock(Chocolate chocolate){
-        System.out.println("add 1 Chocolate to stock");
+        chocolatesQty++;
     }
+    void addStock(Biltong biltong){
+        biltongQty++;
+    }
+
     int getStock(SoftDrink softDrink){
         return softDrinkQty;
     }
@@ -50,6 +61,8 @@ public class OverloadedVendingMachine {
     int getStock(Chocolate chocolate){
         return chocolatesQty;
     }
+    int getStock(Biltong biltong){return biltongQty;}
+
     int getStock(){
         int totalStock = softDrinkQty + saltySnacksQty + chocolatesQty;
         System.out.println(totalStock);
@@ -59,22 +72,18 @@ public class OverloadedVendingMachine {
 
 
     public static void main(String[] args) {
-        OverloadedVendingMachine ovm = new OverloadedVendingMachine(1, 1, 1);
-
-        ovm.buy(1,1,1);
-        ovm.addStock(2,10,15);
-
 
     }
-    public void buy(int softDrink,int saltySnack,int chocolate){
-        System.out.println("You bought " + softDrink + " softDrink(s)");
-        System.out.println( "You bought "  + saltySnack +" saltySnack(s)");
-        System.out.println("You bought "  +chocolate + " chocolate(s)");
+    public void buy(Product product,int qty){
+        if(product instanceof SoftDrink && (softDrinkQty - qty) > 0) { softDrinkQty-=qty; }
+        if(product instanceof SaltySnack && (saltySnacksQty - qty ) >0 ) { saltySnacksQty-=qty; }
+        if(product instanceof Chocolate && (chocolatesQty - qty > 0 )) { chocolatesQty-=qty; }
     }
-    public void addStock(int softDrink,int saltySnack,int chocolate){
-        System.out.println(softDrink + " softDrink(s) is in stock");
-        System.out.println(saltySnack +" saltySnack(s) is in stock");
-        System.out.println(chocolate + " chocolate(s) is in stock");
+
+    public void addStock(Product product, int qty){
+        if(product instanceof SoftDrink && (softDrinkQty - qty) > 0) { softDrinkQty+=qty; }
+        if(product instanceof SaltySnack && (saltySnacksQty - qty ) >0 ) { saltySnacksQty+=qty; }
+        if(product instanceof Chocolate && (chocolatesQty - qty >0 )) { chocolatesQty+=qty; }
     }
 }
 
