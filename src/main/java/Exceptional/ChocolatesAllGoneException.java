@@ -1,4 +1,4 @@
-package vending;
+package Exceptional;
 
 import vending.product.Product;
 

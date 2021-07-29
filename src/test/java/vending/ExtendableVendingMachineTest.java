@@ -1,4 +1,5 @@
 package vending;
+import Extendable.ExtendableVendingMachine;
 import org.junit.jupiter.api.Test;
 
 import vending.product.*;

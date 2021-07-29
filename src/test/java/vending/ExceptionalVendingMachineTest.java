@@ -1,5 +1,7 @@
 package vending;
 
+import Exceptional.ExceptionalVendingMachine;
+import Exceptional.ProductNotFoundException;
 import org.junit.jupiter.api.Test;
 import vending.product.Chocolate;
 import vending.product.Popcorn;
@@ -18,7 +20,7 @@ public class ExceptionalVendingMachineTest {
         try {
             exceptionalVM.buy(softDrink);
         }
-        catch( ProductNotFoundException  e){
+        catch( ProductNotFoundException e){
             e.printStackTrace();
         }
         assertEquals(0, exceptionalVM.getStock(softDrink));

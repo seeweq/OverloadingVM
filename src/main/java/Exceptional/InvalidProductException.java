@@ -1,9 +1,9 @@
-package vending;
+package Exceptional;
 
 import vending.product.Product;
 
 public class InvalidProductException extends RuntimeException{
-    InvalidProductException(Product product){
+    public InvalidProductException(Product product){
         super("InvalidProductException");
     }
 }

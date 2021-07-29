@@ -1,7 +1,7 @@
-package vending;
+package Exceptional;
 
 public class ProductNotFoundException extends Exception{
-    ProductNotFoundException(String s){
+    public ProductNotFoundException(String s){
         super(s);
     }
 }

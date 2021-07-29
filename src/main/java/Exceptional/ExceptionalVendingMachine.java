@@ -1,21 +1,19 @@
-package vending;
+package Exceptional;
 
 import vending.product.*;
-
-import java.awt.event.WindowStateListener;
 
 public class ExceptionalVendingMachine {
     int softDrinkQty;
     int saltySnacksQty;
     int chocolatesQty;
-    ExceptionalVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty) {
+    public ExceptionalVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty) {
         // set the stockLevel instance variables for each product in the constructor
         this.softDrinkQty = softDrinkQty;
         this.saltySnacksQty = saltySnacksQty;
         this.chocolatesQty = chocolatesQty;
     }
 
-        void buy(Product product) throws ProductNotFoundException, RuntimeException{
+        public void buy(Product product) throws ProductNotFoundException, RuntimeException{
         if(!(product instanceof SoftDrink) && !(product instanceof SaltySnack) && !(product instanceof Chocolate)){
             throw new InvalidProductException(product);
         }
@@ -45,7 +43,7 @@ public class ExceptionalVendingMachine {
         if(product instanceof Chocolate && (chocolatesQty - qty >0 )) { chocolatesQty+=qty; }
 
     }
-    int getStock(Product product) {
+    public int getStock(Product product) {
         if (product instanceof SoftDrink) {
             return softDrinkQty;
         }

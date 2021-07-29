@@ -1,8 +1,9 @@
-package vending;
+package Exceptional;
 
+import Exceptional.ProductNotFoundException;
 import vending.product.Product;
 
-class SoftDrinksOutOfStockException extends ProductNotFoundException{
+public class SoftDrinksOutOfStockException extends ProductNotFoundException {
 
     Product product;
 

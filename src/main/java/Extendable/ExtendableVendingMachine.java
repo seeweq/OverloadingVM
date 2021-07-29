@@ -1,14 +1,14 @@
-package vending;
+package Extendable;
 
 import vending.product.*;
 
-class ExtendableVendingMachine {
+public class ExtendableVendingMachine {
     int softDrinkQty;
     int saltySnacksQty;
     int chocolatesQty;
     int biltongQty;
 
-    ExtendableVendingMachine (int softDrinkQty, int saltySnacksQty, int chocolatesQty, int biltongQty){
+    public ExtendableVendingMachine(int softDrinkQty, int saltySnacksQty, int chocolatesQty, int biltongQty){
         // set the stockLevel instance variables for each product in the constructor
         this.softDrinkQty = softDrinkQty;
         this.saltySnacksQty = saltySnacksQty;
@@ -42,11 +42,11 @@ class ExtendableVendingMachine {
     void addStock(SaltySnack saltySnack){
         saltySnacksQty+=3;
     }
-    void addStock(Chocolate chocolate){
+    public void addStock(Chocolate chocolate){
         chocolatesQty+=3;
     }
 
-    int getStock(Product product){
+    public int getStock(Product product){
         if(product instanceof SoftDrink){
             return softDrinkQty;
         }if(product instanceof SaltySnack){
